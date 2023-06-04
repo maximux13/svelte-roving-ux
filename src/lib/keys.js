@@ -18,6 +18,9 @@ function transModifierKey(key) {
       return 'Enter';
     case 'space':
       return ' ';
+    case 'escape':
+    case 'esc':
+      return 'Escape';
     case 'left':
       return 'ArrowLeft';
     case 'right':

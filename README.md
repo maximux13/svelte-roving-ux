@@ -1,4 +1,4 @@
-## Svelte Roving UX
+# Svelte Roving UX
 
 ![](https://img.shields.io/github/license/maximux13/svelte-roving-ux)
 ![](https://img.shields.io/npm/dm/@maximux13/svelte-roving-ux)
@@ -124,6 +124,7 @@ Supported keys are:
 - `Enter` => `enter`
 - `Space` => `space`
 - `Backspace` => `delete`
+- `Escape` => `escape` | `esc`
 - `Meta` => `meta` | `cmd` | `mod`
 
 If you consider that a keybinding is missing, please open an issue or submit a pull request.
@@ -135,7 +136,7 @@ If you consider that a keybinding is missing, please open an issue or submit a p
 | target      | string   | null    | CSS selector for child elements that should be focusable. If null, all child elements are focusable                 |
 | startIndex  | number   | 0       | Index of the item that should be selected initially                                                                 |
 | callback    | function | null    | Callback function that is called when an item is selected. The function receives the item, index, previous and next |
-| keybindings | object   | {}      | Object with keybindings. The key is the hotkey that is pressed and the value is the callback function               |
+| keybindings | object   | `{}`    | Object with keybindings. The key is the hotkey that is pressed and the value is the callback function               |
 
 ## Contributing
 

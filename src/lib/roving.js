@@ -44,7 +44,7 @@ function handleWindowKeydown(event) {
 
   const { target } = event;
   // check if target is a form element
-  if (target.matches('input, textarea, select')) return;
+  if (target.matches('input, textarea, select, button')) return;
 
   let handler;
 
@@ -190,7 +190,7 @@ export default function roving(node, options = {}) {
       const { addedNodes } = mutation;
 
       addedNodes.forEach((node) => {
-        if (node.matches(selectedTarget)) node.tabIndex = -1;
+        if (node.matches?.(selectedTarget)) node.tabIndex = -1;
       });
 
       const rx = state.get(node);
