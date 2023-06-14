@@ -46,6 +46,10 @@ function handleWindowKeydown(event) {
   // check if target is a form element
   if (target.matches('input, textarea, select, button')) return;
 
+  // check if target is child of a contenteditable element or is a contenteditable element
+  if (target.closest('[contenteditable="true"]') || target.matches('[contenteditable="true"]'))
+    return;
+
   let handler;
 
   for (let [keybinding, _handler] of rx.keybindings) {
