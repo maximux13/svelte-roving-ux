@@ -25,7 +25,7 @@
     "roving-tabindex",
     "roving-aria"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build && npm run package",
