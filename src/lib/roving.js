@@ -5,6 +5,18 @@ const state = new Map();
 
 let shouldAddWindowListener = true;
 
+const formElements = ['input', 'textarea', 'select', 'button'];
+
+/**
+ * Check if a node is a form element or is a child of a form element
+ * @param {HTMLElement} node
+ * @returns {boolean}
+ * @private
+ */
+function checkIfFormElement(node) {
+  return node.matches(formElements.join(', ')) || node.closest('[contenteditable="true"]');
+}
+
 /**
  * Handle keydown events for roving tabindex
  *
@@ -12,6 +24,9 @@ let shouldAddWindowListener = true;
  */
 function handleRoverKeydown(event) {
   const { currentTarget: rover } = event;
+
+  // check if target is a form element
+  if (checkIfFormElement(event.target)) return;
 
   switch (event.key) {
     case 'ArrowUp':
@@ -43,12 +58,9 @@ function handleWindowKeydown(event) {
   if (!rx) return;
 
   const { target } = event;
-  // check if target is a form element
-  if (target.matches('input, textarea, select, button')) return;
 
-  // check if target is child of a contenteditable element or is a contenteditable element
-  if (target.closest('[contenteditable="true"]') || target.matches('[contenteditable="true"]'))
-    return;
+  // check if target is a form element
+  if (checkIfFormElement(target)) return;
 
   let handler;
 
