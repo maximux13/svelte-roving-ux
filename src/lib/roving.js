@@ -98,7 +98,9 @@ function activate(rover, item) {
 
   rx.active = item;
   rx.active.tabIndex = 0;
-  rx.active.focus();
+  rx.active.focus({
+    preventScroll: rx.preventScroll
+  });
 
   const previous = rx.index - 1 < 0 ? rx.targets.length - 1 : rx.index - 1;
   const next = rx.index + 1 > rx.targets.length - 1 ? 0 : rx.index + 1;
@@ -168,7 +170,13 @@ function move(rover, direction) {
  * @param {import('./types.js').RovingOptions} [options={}] - An object containing options for the roving tab index.
  */
 export default function roving(node, options = {}) {
-  const { target = '', startIndex = 0, callback, keybindings = {} } = options;
+  const {
+    target = '',
+    startIndex = 0,
+    callback,
+    keybindings = {},
+    preventScroll = false
+  } = options;
 
   const selectedTarget = target || ':scope > *';
 
@@ -195,6 +203,7 @@ export default function roving(node, options = {}) {
     active,
     callback,
     index: startIndex,
+    preventScroll,
     keybindings: Object.keys(keybindings).reduce((acc, key) => {
       acc.set(parseKeybinding(key), keybindings[key]);
       return acc;

@@ -76,6 +76,10 @@ export type RovingOptions = {
    * ```
    */
   keybindings?: Keybindings;
+  /**
+   * Prevents the default scroll behavior when the roving tab index is initialized.
+   */
+  preventScroll?: boolean;
 };
 
 export type RovingState = {
@@ -86,4 +90,5 @@ export type RovingState = {
   next: number;
   callback?: SelectCallback;
   keybindings?: Map<Keybinding, KeybindingCallback>;
+  preventScroll?: boolean;
 };
